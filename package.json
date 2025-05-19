@@ -17,7 +17,8 @@
     "next.js": "^1.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "sweetalert2": "^11.21.2"
+    "sweetalert2": "^11.6.13",
+    "tailwind": "^2.3.1"
   },
   "devDependencies": {
     "@types/node": "^20.17.48",
