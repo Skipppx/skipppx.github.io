@@ -18,12 +18,30 @@ button, [type='button'], [type='reset'], [type='submit'] {
   background-color: orange!important;
   padding: 1em;
   font-size: 1em;
+  position: relative;
+  display: block;
+  width: 20em;
+  max-width: 90vw;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.connectButton {
+  position: absolute;
+  bottom: 1em;
+  width: 25%;
 }
 
 a {
   color: white;
   padding: 1.2em!important;
   width: fit-content;
+  position: relative;
+  display: block;
+  width: 20em;
+  max-width: 90vw;
+  text-align: center;
+  margin: 0 auto;
 }
 
 flex {
@@ -51,6 +69,19 @@ input {
   color: orange!important;
   padding: 1em;
   margin: 1em;
+  position: relative;
+  display: block;
+  width: 20em;
+  max-width: 90vw;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 1em;
+}
+
+.canvasdb {
+  display: block;
+  margin: 0 auto;
+  width: 50vw;
 }
 
 tbody td, th {
