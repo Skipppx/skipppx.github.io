@@ -223,29 +223,30 @@ export class Granboard {
         var value = CreateSegment(segmentID)['Value'];
         totalScore += value;
 
-        Swal.fire({
-          title: "Who's Playing?",
-          text: "Type your name here!",
-          input: 'text',
-          showCancelButton: true        
-      }).then((result) => {
-          if (result.value) {
-              console.log("Result: " + result.value);
-          }
-      });
-
         const dialog = document.querySelector("dialog");
         const nameInput = document.querySelector("#nameInput");
         const emailInput = document.querySelector("#emailInput");
         const name = nameInput ? (nameInput as HTMLInputElement).value : "";
         const email = emailInput ? (emailInput as HTMLInputElement).value : "";
 
+        const resultId = 'spanResult' + JSON.stringify(hitsTaken)
+        const resultBox = document.getElementById(resultId);
+        const totalBox = document.getElementById('spanTotal');
+
+        if (resultBox) {
+          resultBox.textContent = JSON.stringify(value);
+        }
+
+        if (totalBox) {
+          totalBox.textContent = JSON.stringify(totalScore);
+        }
+
         if (dialog) {
           dialog.querySelector("#nameSpan")!.textContent = "Name: " + name;
           dialog.querySelector("#hitSpan")!.textContent = "Last Hit: " + value;
           dialog.querySelector("#scoreSpan")!.textContent = "Current Total Score: " + totalScore;
           dialog.querySelector("#dartsSpan")!.textContent = "Darts Remaining: " + (7 - hitsTaken);
-          dialog.show();
+          // dialog.show();
         } else {
           console.log("Dialog element not found.");
         }
@@ -261,6 +262,21 @@ export class Granboard {
             cancelButtonText: 'No'
           }).then((result) => {
             if (result.isConfirmed) {
+               const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'center',
+                  iconColor: 'green',
+                  customClass: {
+                    popup: 'colored-toast',
+                  },
+                  showConfirmButton: false,
+                  timer: 2000,
+                  timerProgressBar: true,
+                })
+              Toast.fire({
+                    icon: 'warning',
+                    title: 'Get ready to throw!',
+                  });
               // do nothing
               // let timerInterval: string | number | NodeJS.Timeout | undefined;
               //   Swal.fire({
@@ -288,7 +304,42 @@ export class Granboard {
               //     }
               //   });
             } else {
-              location.reload();
+              Swal.fire({
+                    title: "Who's Playing?",
+                    html:
+                      '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
+                      '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+                    focusConfirm: false,
+                    preConfirm: () => {
+                      return [
+                        (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
+                        (document.getElementById('swal-input2') as HTMLInputElement)?.value || "",
+                      ]
+                    }
+                  }).then((result) => {
+                    //reset hits & total
+                    const allResultsSpans = document.getElementsByClassName('spanResult');
+                    Array.from(allResultsSpans).forEach(element => {
+                      element.innerHTML = '';
+                    });
+                    const totalSpan = document.getElementById('spanTotal');
+                    if (totalSpan) {
+                      totalSpan.innerHTML = '';
+                    }
+
+                    if (result.value) {
+                        const nameInput = document.getElementById('nameInput') as HTMLInputElement || "";
+                        const emailInput = document.getElementById('emailInput') as HTMLInputElement || "";
+                        if (nameInput) {
+                          nameInput.innerHTML = result.value[0];
+                          nameInput.placeholder = result.value[0];
+                        }
+                        if (emailInput) {
+                          emailInput.innerHTML = result.value[1];
+                          emailInput.placeholder = result.value[1];
+                        }
+                    }
+                  });
             }
           });
           loadFileFromPath([name, email, totalScore, new Date().toLocaleDateString('en-GB')]);
@@ -349,23 +400,44 @@ export class Granboard {
       }
     }
     else {
-      Swal.fire ({
-        title: 'Out of Darts!',
-        text: 'Want to play again?',
-        icon: 'warning',
-        showDenyButton: true,
-        showConfirmButton: true,
-        confirmButtonText: 'Yes',
-        denyButtonText: 'No'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          //nothing
-        } else if (result.isDenied) {
-          location.reload();
-        }
-      });
       hitsTaken = 1;
       totalScore = 0;
+      Swal.fire({
+        title: "Who's Playing?",
+        html:
+          '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
+          '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+        focusConfirm: false,
+        preConfirm: () => {
+          return [
+            (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
+            (document.getElementById('swal-input2') as HTMLInputElement)?.value || "",
+          ]
+        }
+      }).then((result) => {
+        //reset hits & total
+        const allResultsSpans = document.getElementsByClassName('spanResult');
+        Array.from(allResultsSpans).forEach(element => {
+          element.innerHTML = '';
+        });
+        const totalSpan = document.getElementById('spanTotal');
+        if (totalSpan) {
+          totalSpan.innerHTML = '';
+        }
+
+        if (result.value) {
+            const nameInput = document.getElementById('nameInput') as HTMLInputElement || "";
+            const emailInput = document.getElementById('emailInput') as HTMLInputElement || "";
+            if (nameInput) {
+              nameInput.innerHTML = result.value[0];
+              nameInput.placeholder = result.value[0];
+            }
+            if (emailInput) {
+              emailInput.innerHTML = result.value[1];
+              emailInput.placeholder = result.value[1];
+            }
+        }
+      });
     }
   }
 }

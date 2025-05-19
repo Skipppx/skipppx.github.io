@@ -79,8 +79,24 @@ export default function Home() {
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+
+
   useEffect(() => {
-   
+   const Toast = Swal.mixin({
+                     toast: true,
+                     position: 'center',
+                     iconColor: 'green',
+                     customClass: {
+                       popup: 'colored-toast',
+                     },
+                     showConfirmButton: false,
+                     timer: 2000,
+                     timerProgressBar: true,
+                   })
+                 Toast.fire({
+                       icon: 'warning',
+                       title: 'Get ready to throw!',
+                     });
       Swal.fire({
       title: "Who's Playing?",
       html:
@@ -96,8 +112,8 @@ export default function Home() {
     }).then((result) => {
       if (result.value) {
           console.log("Result: " + result.value);
-          const nameInput = document.getElementById('nameInput');
-          const emailInput = document.getElementById('emailInput');
+          const nameInput = document.getElementById('nameInput') as HTMLInputElement || "";
+          const emailInput = document.getElementById('emailInput') as HTMLInputElement || "";
           if (nameInput) {
             nameInput.innerHTML = result.value[0];
             nameInput.placeholder = result.value[0];
@@ -215,21 +231,25 @@ export default function Home() {
               id="nameInput"
               type="text"
               className="content-name text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-              // placeholder="Enter your name to start."
+              placeholder="Name"
             >
             </input>
             <input
               id="emailInput"
               type="text"
               className="content-name text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-              // placeholder="Enter your email (optional)."
+              placeholder="Email"
             >
             </input>
           </div>
           <div> 
-          <div id="blackboxHit1"><span className="spanHit">Hit 1: </span><span className="spanResult">60 </span></div>
-          <div id="blackboxHit2"><span className="spanHit">Hit 2: </span><span className="spanResult spanResult2">60 </span></div>
-          <div id="blackboxHit3"><span className="spanHit">Hit 3: </span><span className="spanResult spanResult3">60 </span></div>
+          <div id="blackboxHit1"><span className="spanHit">Hit 1: </span><span className="spanResult" id="spanResult1"> </span></div>
+          <div id="blackboxHit2"><span className="spanHit">Hit 2: </span><span className="spanResult spanResult2" id="spanResult2"> </span></div>
+          <div id="blackboxHit3"><span className="spanHit">Hit 3: </span><span className="spanResult spanResult3" id="spanResult3"> </span></div>
+          <div id="blackboxHit4"><span className="spanHit">Hit 4: </span><span className="spanResult spanResult4" id="spanResult4"> </span></div>
+          <div id="blackboxHit5"><span className="spanHit">Hit 5: </span><span className="spanResult spanResult5" id="spanResult5"> </span></div>
+          <div id="blackboxHit6"><span className="spanHit">Hit 6: </span><span className="spanResult spanResult6" id="spanResult6"> </span></div>
+          <div id="totalBox"><span id="titleTotal">Total</span><span id="spanTotal">250</span></div>
           </div>
         <canvas className={'canvasdb'} ref={canvasRef} width={500} height={500} />
         <div className="items-center">
