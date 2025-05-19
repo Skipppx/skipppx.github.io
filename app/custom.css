@@ -1,0 +1,42 @@
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: url('https://st2.depositphotos.com/4164361/6539/i/450/depositphotos_65398393-stock-photo-orange-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+button, [type='button'], [type='reset'], [type='submit'] {
+  border: none;
+  cursor: pointer;
+  background-color: orange!important;
+}
+
+a {
+  color: white;
+  padding: 1.2em!important;
+  width: fit-content;
+}
+
+input {
+  border: none;
+  color: orange!important;
+}
+
+tbody td, th {
+  padding: 1.5em;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: orange;
+}
+
+tbody tr:nth-child(even) {
+  background-color: orange;
+}
+
+table {
+  background-color: black;
+}
