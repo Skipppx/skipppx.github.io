@@ -1,9 +1,12 @@
 
 * {
-  font-family: 'Sofia Pro', sans-serif;
+  /* font-family: 'Sofia Pro', sans-serif; */
+  font-family: monospace;
   font-size: 1.05em;
 }
-
+::placeholder {
+  color: orange;
+}
 body {
   background: url('https://media.istockphoto.com/id/1941990982/vector/vector-grunge-pattern-dots-raster-painting-halftone-on-white-background.webp?b=1&s=612x612&w=0&k=20&c=OaFla15hyj2XYyDedTkd3J4aCo9silE9r5-TqsMZ0nk=');
   background-size: cover;
@@ -29,7 +32,11 @@ button, [type='button'], [type='reset'], [type='submit'] {
 .connectButton {
   position: absolute;
   bottom: 1em;
-  width: 25%;
+  right: 2em;
+  width: 15%;
+  font-size: .70em;
+  background-color: rgb(0, 0, 0, 0.1)!important;
+  backdrop-filter: blur(4px);
 }
 
 a {
@@ -66,22 +73,68 @@ flex-row {
 
 input {
   border: none;
-  color: orange!important;
+  color: orange;
   padding: 1em;
   margin: 1em;
-  position: relative;
   display: block;
-  width: 20em;
-  max-width: 90vw;
+  width: 40vw;
   text-align: center;
   margin: 0 auto;
+  margin-left: 2vw;
   margin-top: 1em;
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  background: transparent;
+  border-radius: .3em;
+  /* backdrop-filter: blur(1px); */
+  filter: drop-shadow();
+}
+
+#nameInput, #emailInput {
+  font-size: 1.5em;
+  /* background-color: rgba(000, 000, 000, 0.5); */
+  position: absolute;
+  text-align: left;
+  /* z-index: -2; */
+  margin-left: .3em;
+  /* text-shadow: -.5px -.5px 0 #fff, .5px -.5px 0 #fff, -.5px .5px 0 #fff, .5px .5px 0 #fff; */
+}
+#nameInput {
+  width: fit-content;
+  top: -1.15em;
+  margin-lefT: 1.5em;
+  transform: rotate(-8deg);
+  color: white;
+}
+#nameInput::placeholder {
+  color: white;
+}
+#emailInput {
+  top: 2.3em;
+  margin-left: 1em;
+  transform: rotate(3deg);
+  font-size: 1.2em;
+}
+
+.inputsDiv {
+  width: 100vw;
+  margin: 0 auto;
+  position: relative;
+  display: block;
 }
 
 .canvasdb {
   display: block;
   margin: 0 auto;
-  width: 50vw;
+  margin-top: 2em;
+  margin-left: 45vw;
+  height: 80vh;
+  /* border:5px solid rgb(255, 255, 255, 1); */
+  /* background-color: black; */
+
+}
+
+.swal2-html-container {
+  margin: 0 auto;
 }
 
 tbody td, th {
@@ -98,4 +151,64 @@ tbody tr:nth-child(even) {
 
 table {
   background-color: black;
+}
+
+#blackboxName {
+  background-color: black;
+  width: 15em;
+  height: 3em;
+  position: absolute;
+  z-index: -999;
+  transform: rotate(-8deg);
+  margin-lefT: 2em;
+  top: 1em;
+}
+#blackboxEmail {
+  background-color: black;
+  width: 19em;
+  height: 3em;
+  position: absolute;
+  z-index: -999;
+  margin-top: 4em;
+  transform: rotate(3deg);
+}
+
+#blackboxHit1, #blackboxHit2, #blackboxHit3 {
+  background-color: black;
+  width: 9em;
+  height: 2.8em;
+  position: absolute;
+  z-index: -999;
+  margin-top: 9em;
+  margin-left: 12vw;
+  transform: rotate(-0deg);
+}
+#blackboxHit2 {
+  margin-top: 13em;
+}
+#blackboxHit3 {
+  margin-top: 17em;
+}
+
+.spanHit {
+  position: absolute;
+  top: .7em;
+  left: .8em;
+}
+
+.spanResult {
+  position: absolute;
+  top: -.1em;
+  left: 60%;
+  transform: rotate(-5deg);
+  color: orange;
+  font-size: 2.8em;
+  text-shadow: -1px 0 white, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.spanResult2 {
+  transform: rotate(8deg);
+}
+.spanResult3 {
+  transform: rotate(-2deg);
 }

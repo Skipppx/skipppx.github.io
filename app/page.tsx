@@ -1,10 +1,11 @@
 "use client";
 
-import { Granboard } from "@/services/granboard";
+import { Granboard } from "../services/granboard";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Excel from "exceljs";
 import 'animate.css';
+import Swal from "sweetalert2";
 
 
 type Player = {
@@ -79,21 +80,52 @@ export default function Home() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+   
+      Swal.fire({
+      title: "Who's Playing?",
+      html:
+        '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
+        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+      focusConfirm: false,
+      preConfirm: () => {
+        return [
+          (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
+          (document.getElementById('swal-input2') as HTMLInputElement)?.value || "",
+        ]
+      }
+    }).then((result) => {
+      if (result.value) {
+          console.log("Result: " + result.value);
+          const nameInput = document.getElementById('nameInput');
+          const emailInput = document.getElementById('emailInput');
+          if (nameInput) {
+            nameInput.innerHTML = result.value[0];
+            nameInput.placeholder = result.value[0];
+          }
+          if (emailInput) {
+            emailInput.innerHTML = result.value[1];
+            emailInput.placeholder = result.value[1];
+          }
+      }
+    });
+  
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    console.log("loaded");
-
     for (let index = 0; index < 20; index++) {
       const start_rad = 0.05 * Math.PI + index * 0.1 * Math.PI;
       const end_rad = start_rad + 0.1 * Math.PI;
-      const colour1 = '#ffb914';
-      const colour2 = '#ff9100';
+      // const colour1 = '#ffb914';
+      const colour1 = '#ffffff';
+      const colour2 = '#ffb914';
+      // const colour2 = '#ffffff';
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "white";
 
       // double
-      ctx.strokeStyle = "#000000";
       ctx.fillStyle = index % 2 === 0 ? colour1 : colour2;
       ctx.beginPath();
       ctx.moveTo(250, 250); 
@@ -103,7 +135,6 @@ export default function Home() {
       ctx.stroke();
 
       // outer single
-      ctx.strokeStyle = "#000000";
       ctx.fillStyle = index % 2 === 0 ? "#000000" : "#FFFFFF";
       ctx.beginPath();
       ctx.moveTo(250, 250); 
@@ -113,7 +144,6 @@ export default function Home() {
       ctx.stroke();
 
       // triple
-      ctx.strokeStyle = "#000000";
       ctx.fillStyle = index % 2 === 0 ? colour1 : colour2;
       ctx.beginPath();
       ctx.moveTo(250, 250); 
@@ -123,7 +153,6 @@ export default function Home() {
       ctx.stroke();
 
       // inner single
-      ctx.strokeStyle = "#000000";
       ctx.fillStyle = index % 2 === 0 ? "#000000" : "#FFFFFF";
       ctx.beginPath();
       ctx.moveTo(250, 250); 
@@ -133,7 +162,6 @@ export default function Home() {
       ctx.stroke();
 
       // outer bull
-      ctx.strokeStyle = "#000000";
       ctx.fillStyle = colour1;
       ctx.beginPath();
       ctx.arc(250, 250, 30, 0, 2 * Math.PI, false);
@@ -141,7 +169,6 @@ export default function Home() {
       ctx.stroke();
 
       // inner bull
-      ctx.strokeStyle = "#000000";
       ctx.fillStyle = "#e62236";
       ctx.beginPath();
       ctx.arc(250, 250, 10, 0, 2 * Math.PI, false);
@@ -182,20 +209,27 @@ export default function Home() {
       </dialog>
       <div className="flex">
         <div className="inputsDiv flex flex-row">
+        <span id="blackboxName"></span>
+        <span id="blackboxEmail"></span>
           <input
               id="nameInput"
               type="text"
-              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-              placeholder="Enter your name to start."
+              className="content-name text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              // placeholder="Enter your name to start."
             >
             </input>
             <input
               id="emailInput"
               type="text"
-              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-              placeholder="Enter your email (optional)."
+              className="content-name text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              // placeholder="Enter your email (optional)."
             >
             </input>
+          </div>
+          <div> 
+          <div id="blackboxHit1"><span className="spanHit">Hit 1: </span><span className="spanResult">60 </span></div>
+          <div id="blackboxHit2"><span className="spanHit">Hit 2: </span><span className="spanResult spanResult2">60 </span></div>
+          <div id="blackboxHit3"><span className="spanHit">Hit 3: </span><span className="spanResult spanResult3">60 </span></div>
           </div>
         <canvas className={'canvasdb'} ref={canvasRef} width={500} height={500} />
         <div className="items-center">
@@ -206,12 +240,6 @@ export default function Home() {
             {connectionState}
           </button>
         </div>
-        <Link
-          href="/leaderboard"
-          className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-        >
-          Click here for Leaderboard
-        </Link>
       </div>
     </main>
   );

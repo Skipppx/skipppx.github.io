@@ -223,6 +223,17 @@ export class Granboard {
         var value = CreateSegment(segmentID)['Value'];
         totalScore += value;
 
+        Swal.fire({
+          title: "Who's Playing?",
+          text: "Type your name here!",
+          input: 'text',
+          showCancelButton: true        
+      }).then((result) => {
+          if (result.value) {
+              console.log("Result: " + result.value);
+          }
+      });
+
         const dialog = document.querySelector("dialog");
         const nameInput = document.querySelector("#nameInput");
         const emailInput = document.querySelector("#emailInput");
