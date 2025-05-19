@@ -180,24 +180,24 @@ export default function Home() {
         <br/>
         <span className="animate__animated animate__bounce" id="dartsSpan">Remaining Darts: </span>
       </dialog>
-      <div className="flex min-h-screen flex-col items-center justify-between px-24 py-10 gap-4">
-        <div className="flex flex-row gap-4">
-        <input
-            id="nameInput"
-            type="text"
-            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-            placeholder="Enter your name to start."
-          >
-          </input>
+      <div className="flex">
+        <div className="inputsDiv flex flex-row">
           <input
-            id="emailInput"
-            type="text"
-            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-            placeholder="Enter your email (optional)."
-          >
-          </input>
+              id="nameInput"
+              type="text"
+              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              placeholder="Enter your name to start."
+            >
+            </input>
+            <input
+              id="emailInput"
+              type="text"
+              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              placeholder="Enter your email (optional)."
+            >
+            </input>
           </div>
-        <canvas ref={canvasRef} width={500} height={500} />
+        <canvas className={'canvasdb'} ref={canvasRef} width={500} height={500} />
         <div className="items-center">
           <button
             className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"

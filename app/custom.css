@@ -1,7 +1,11 @@
 
+* {
+  font-family: 'Sofia Pro', sans-serif;
+  font-size: 1.05em;
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: url('https://st2.depositphotos.com/4164361/6539/i/450/depositphotos_65398393-stock-photo-orange-background.jpg');
+  background: url('https://media.istockphoto.com/id/1941990982/vector/vector-grunge-pattern-dots-raster-painting-halftone-on-white-background.webp?b=1&s=612x612&w=0&k=20&c=OaFla15hyj2XYyDedTkd3J4aCo9silE9r5-TqsMZ0nk=');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -12,6 +16,8 @@ button, [type='button'], [type='reset'], [type='submit'] {
   border: none;
   cursor: pointer;
   background-color: orange!important;
+  padding: 1em;
+  font-size: 1em;
 }
 
 a {
@@ -20,9 +26,31 @@ a {
   width: fit-content;
 }
 
+flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 input {
   border: none;
   color: orange!important;
+  padding: 1em;
+  margin: 1em;
 }
 
 tbody td, th {
