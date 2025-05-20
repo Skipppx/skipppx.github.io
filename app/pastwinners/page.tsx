@@ -15,8 +15,9 @@ export default function Home() {
     try {
       const buffer = await workbook.xlsx.writeBuffer();
       const base64Data = Buffer.from(buffer).toString("base64");
+      console.log('saving winner sheet');
 
-      const response = await fetch('/api/save-leaderboard', {
+      const response = await fetch('/api/save-pastwinners', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
@@ -143,6 +144,7 @@ export default function Home() {
 
   const loadFileFromPath = async () => {
     try {
+      console.log('loading winner sheet');
       const response = await fetch("data/pastwinners.xlsx");
       if (!response.ok) {
         throw new Error(`Failed to fetch file: ${response.statusText}`);

@@ -5,7 +5,7 @@
   font-size: 1.05em;
 }
 ::placeholder {
-  color: orange;
+  color: #ebac1a;
 }
 body {
   background: url('../public/data/background.png');
@@ -18,7 +18,7 @@ body {
 button, [type='button'], [type='reset'], [type='submit'] {
   border: none;
   cursor: pointer;
-  background-color: orange!important;
+  background-color: #ebac1a!important;
   padding: 1em;
   font-size: 1em;
   position: relative;
@@ -74,7 +74,7 @@ flex-row {
 
 input {
   border: none;
-  color: orange;
+  color: #ebac1a;
   padding: 1em;
   margin: 1em;
   display: block;
@@ -149,16 +149,17 @@ td {
 
 tbody td, th {
   padding: 1.5em;
+  margin: 0;
 }
 
 tbody tr:not(:first-child) {
-  background-color: rgb(255, 165, 0, 0.8);
+  background-color: #ebac1a;
   color: black;
   font-weight: bold;
 }
 
 tbody th {
-  background-color: rgb(0, 0, 0, .6);
+  background-color: rgb(0, 0, 0, .86);
   transform: rotate(-6deg);
   backdrop-filter: saturate(180%) blur(2px);
 }
@@ -204,7 +205,7 @@ tbody th {
 }
 
 #spanTotal {
-  color: orange;
+  color: #ebac1a;
   text-shadow: -2px 0 white, 0 2px black, 2px 0 black, 0 -2px black;
   font-size: 4.2em;
   position: absolute;
@@ -246,7 +247,7 @@ tbody th {
   top: -.1em;
   left: 60%;
   transform: rotate(-5deg);
-  color: orange;
+  color: #ebac1a;
   font-size: 2.8em;
   text-shadow: -1px 0 white, 0 1px black, 1px 0 black, 0 -1px black;
 }

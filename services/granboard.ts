@@ -100,6 +100,7 @@ const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
     try {
       const buffer = await workbook.xlsx.writeBuffer();
       const base64Data = Buffer.from(buffer).toString("base64");
+      console.log('saving leaderboard sheet');
 
       const response = await fetch('/api/save-leaderboard', {
         method: "POST",
@@ -134,6 +135,7 @@ const readDataFromFile = (data: ArrayBuffer, item: any) => {
 
 const loadFileFromPath = async (item: any) => {
   try {
+    console.log('loading leader sheet');
     const response = await fetch("data/leaderboard.xlsx");
     if (!response.ok) {
       throw new Error(`Failed to fetch file: ${response.statusText}`);
@@ -330,6 +332,7 @@ export class Granboard {
             }
           });
           loadFileFromPath([name, email, totalScore, new Date().toLocaleDateString('en-GB')]);
+          console.log('loading leader sheet');
           const response = await fetch("data/leaderboard.xlsx");
             if (!response.ok) {
               throw new Error(`Failed to fetch file: ${response.statusText}`);
