@@ -132,21 +132,18 @@ const readDataFromFile = (data: ArrayBuffer, item: any) => {
     });
   }
 
-  const loadFileFromPath = async (item: any) => {
-    try {
-      const response = await fetch("data/leaderboard.xlsx");
-      if (!response.ok) {
-        throw new Error(`Failed to fetch file: ${response.statusText}`);
-      }
-      const arrayBuffer = await response.arrayBuffer();
-      readDataFromFile(arrayBuffer, item);
-    } catch (error) {
-      console.error("Error loading file:", error);
+const loadFileFromPath = async (item: any) => {
+  try {
+    const response = await fetch("data/leaderboard.xlsx");
+    if (!response.ok) {
+      throw new Error(`Failed to fetch file: ${response.statusText}`);
     }
-    useEffect(() => {
-      loadFileFromPath(item);
-    }, []);
-  };
+    const arrayBuffer = await response.arrayBuffer();
+    readDataFromFile(arrayBuffer, item);
+  } catch (error) {
+    console.error("Error loading file:", error);
+  }
+};
     
 
 
@@ -160,11 +157,8 @@ export class Granboard {
       filters: [{ services: [GRANBOARD_UUID] }],
     });
 
-    const devices = await navigator.bluetooth;
-    console.log('BLUETOOTH ' + JSON.stringify(navigator.bluetooth));
-
     if (!boardBluetooth || !boardBluetooth.gatt) {
-      throw new Error("This PC's bluetooth could not find the board. Please make sure the board is connected.");
+      throw new Error("This PC's Bluetooth could not find the board. Please make sure the board is connected.");
     }
 
     if (!boardBluetooth.gatt.connected) {
@@ -173,24 +167,17 @@ export class Granboard {
 
     const service = await boardBluetooth.gatt.getPrimaryService(GRANBOARD_UUID);
 
-    // Find the characteristic that supports the notify property. That is the one that executes when
-    // a dartboard segment is hit
-    let boardCharacteristic = (await service.getCharacteristics()).find(
+    const boardCharacteristic = (await service.getCharacteristics()).find(
       (characteristic) => characteristic.properties.notify
     );
 
     if (!boardCharacteristic) {
-      throw new Error(
-        "This PC's bluetooth could not find the board. Please make sure the board is connected."
-      );
+      throw new Error("This PC's Bluetooth could not find the board. Please make sure the board is connected.");
     }
+
     const board = new Granboard(boardCharacteristic);
 
-    boardBluetooth.gatt.connect();
-
-
     await boardCharacteristic.startNotifications();
-    console.log(boardBluetooth.gatt.getPrimaryService(GRANBOARD_UUID))
 
     return board;
   }
@@ -226,8 +213,8 @@ export class Granboard {
         const dialog = document.querySelector("dialog");
         const nameInput = document.querySelector("#nameInput");
         const emailInput = document.querySelector("#emailInput");
-        const name = nameInput ? (nameInput as HTMLInputElement).value : "";
-        const email = emailInput ? (emailInput as HTMLInputElement).value : "";
+        const name = nameInput ? (nameInput as HTMLInputElement).placeholder : "";
+        const email = emailInput ? (emailInput as HTMLInputElement).placeholder : "";
 
         const resultId = 'spanResult' + JSON.stringify(hitsTaken)
         const resultBox = document.getElementById(resultId);
