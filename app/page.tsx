@@ -243,12 +243,12 @@ export default function Home() {
             </input>
           </div>
           <div id="blackBoxes"> 
-          <div id="blackboxHit1"><span className="spanHit">Hit 1: </span><span className="spanResult" id="spanResult1"> </span></div>
-          <div id="blackboxHit2"><span className="spanHit">Hit 2: </span><span className="spanResult spanResult2" id="spanResult2"> </span></div>
-          <div id="blackboxHit3"><span className="spanHit">Hit 3: </span><span className="spanResult spanResult3" id="spanResult3"> </span></div>
-          <div id="blackboxHit4"><span className="spanHit">Hit 4: </span><span className="spanResult spanResult4" id="spanResult4"> </span></div>
-          <div id="blackboxHit5"><span className="spanHit">Hit 5: </span><span className="spanResult spanResult5" id="spanResult5"> </span></div>
-          <div id="blackboxHit6"><span className="spanHit">Hit 6: </span><span className="spanResult spanResult6" id="spanResult6"> </span></div>
+          <div id="blackboxHit1"><span className="spanHit">Throw 1: </span><span className="spanResult" id="spanResult1"> </span></div>
+          <div id="blackboxHit2"><span className="spanHit">Throw 2: </span><span className="spanResult spanResult2" id="spanResult2"> </span></div>
+          <div id="blackboxHit3"><span className="spanHit">Throw 3: </span><span className="spanResult spanResult3" id="spanResult3"> </span></div>
+          <div id="blackboxHit4"><span className="spanHit">Throw 4: </span><span className="spanResult spanResult4" id="spanResult4"> </span></div>
+          <div id="blackboxHit5"><span className="spanHit">Throw 5: </span><span className="spanResult spanResult5" id="spanResult5"> </span></div>
+          <div id="blackboxHit6"><span className="spanHit">Throw 6: </span><span className="spanResult spanResult6" id="spanResult6"> </span></div>
           <div id="totalBox"><span id="titleTotal">Total</span><span id="spanTotal"></span></div>
           </div>
         <canvas className={'canvasdb'} ref={canvasRef} width={500} height={500} />
