@@ -18,7 +18,8 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "sweetalert2": "^11.21.2",
-    "tailwind": "^2.4.1"
+    "tailwind": "^2.4.1",
+    "vercel": "^42.1.1"
   },
   "devDependencies": {
     "@types/node": "^20.17.49",
