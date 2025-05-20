@@ -218,7 +218,7 @@ export class Granboard {
         const name = nameInput ? (nameInput as HTMLInputElement).placeholder : "";
         const email = emailInput ? (emailInput as HTMLInputElement).placeholder : "";
 
-        const resultId = 'spanResult' + JSON.stringify(hitsTaken)
+        const resultId = 'spanResult' + JSON.stringify(hitsTaken - 1)
         const resultBox = document.getElementById(resultId);
         const totalBox = document.getElementById('spanTotal');
 
@@ -379,6 +379,15 @@ export class Granboard {
                 }
                 totalScore = 0;
                 hitsTaken = 1;
+                //reset hits & total
+                const allResultsSpans = document.getElementsByClassName('spanResult');
+                Array.from(allResultsSpans).forEach(element => {
+                  element.innerHTML = '';
+                });
+                const totalSpan = document.getElementById('spanTotal');
+                if (totalSpan) {
+                  totalSpan.innerHTML = '';
+                }
               })})
             .catch((error) => {
               console.error("Error reading Excel file:", error);

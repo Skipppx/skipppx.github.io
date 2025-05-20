@@ -30,7 +30,7 @@ button, [type='button'], [type='reset'], [type='submit'] {
 }
 
 .connectButton {
-  position: absolute;
+  position: fixed;
   bottom: 1em;
   right: 2em;
   width: 15%;
@@ -101,7 +101,7 @@ input {
 }
 #nameInput {
   width: fit-content;
-  top: -1.15em;
+  top: -2.6em;
   margin-lefT: 1.5em;
   transform: rotate(-8deg);
   color: white;
@@ -110,7 +110,7 @@ input {
   color: white;
 }
 #emailInput {
-  top: 2.3em;
+  top: 1em;
   margin-left: 1em;
   transform: rotate(3deg);
   font-size: 1.2em;
@@ -128,7 +128,7 @@ input {
   margin: 0 auto;
   margin-top: 2em;
   margin-left: 45vw;
-  height: 80vh;
+  height: 95vh;
   /* border:5px solid rgb(255, 255, 255, 1); */
   /* background-color: black; */
 
@@ -169,18 +169,16 @@ tbody th {
   width: 15em;
   height: 3em;
   position: absolute;
-  z-index: -999;
   transform: rotate(-8deg);
   margin-lefT: 2em;
-  top: 1em;
+  top: -1em;
 }
 #blackboxEmail {
   background-color: black;
   width: 19em;
   height: 3em;
   position: absolute;
-  z-index: -999;
-  margin-top: 4em;
+  margin-top: 2.2em;
   transform: rotate(3deg);
 }
 
@@ -188,9 +186,9 @@ tbody th {
   background-color: rgb(0, 0, 0, 0.5);
   width: 8em;
   height: 5em;
-  position: absolute;
+  position: fixed;
   /* z-index: -10; */
-  right: 1em;
+  right: 0;
   top: 1em;
   transform: rotate(10deg);
 }
@@ -219,17 +217,17 @@ tbody th {
   width: 8em;
   height: 2.8em;
   position: absolute;
-  z-index: -999;
-  margin-top: 9em;
+  z-index: 1;
+  margin-top: 7em;
   margin-left: 1em;
   transform: rotate(-0deg);
   /* border: px solid orange; */
 }
 #blackboxHit2, #blackboxHit5 {
-  margin-top: 13em;
+  margin-top: 10.5em;
 }
 #blackboxHit3, #blackboxHit6 {
-  margin-top: 17em;
+  margin-top: 14em;
 }
 
 #blackboxHit4, #blackboxHit5, #blackboxHit6 {
@@ -245,11 +243,11 @@ tbody th {
 .spanResult {
   position: absolute;
   top: -.1em;
-  left: 60%;
+  left: 67%;
   transform: rotate(-5deg);
   color: #ebac1a;
   font-size: 2.8em;
-  text-shadow: -1px 0 white, 0 1px black, 1px 0 black, 0 -1px black;
+  text-shadow: -2px 0 white, 0 1px black, 2px 0 black, 0 -1px black;
 }
 
 .spanResult2, .spanResult6 {
@@ -260,12 +258,12 @@ tbody th {
 }
 
 /* bigger screens */
-@media screen and (min-width: 992px) {
+/* @media screen and (min-width: 1000px) { */
   #blackboxHit1, #blackboxHit2, #blackboxHit3 {
     margin-left: 4.5em;
   }
   #blackboxHit4, #blackboxHit5, #blackboxHit6 {
-    margin-left: 15.5em;
+    margin-left: 14em;
   }
 
   .inputsDiv {
@@ -283,4 +281,4 @@ tbody th {
     top: 2em;
     right: 2em;
   }
-  }
+  /* } */
