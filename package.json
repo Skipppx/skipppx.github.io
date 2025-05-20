@@ -17,11 +17,11 @@
     "next.js": "^1.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "sweetalert2": "^11.6.13",
-    "tailwind": "^2.3.1"
+    "sweetalert2": "^11.21.2",
+    "tailwind": "^2.4.1"
   },
   "devDependencies": {
-    "@types/node": "^20.17.48",
+    "@types/node": "^20.17.49",
     "@types/react": "^18.3.21",
     "@types/react-dom": "^18.3.7",
     "@types/web-bluetooth": "^0.0.20",
