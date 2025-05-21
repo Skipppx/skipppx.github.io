@@ -195,210 +195,211 @@ export class Granboard {
   }
 
   private async onSegmentHit() {
-    //ADD THIS if no swal alert currently
-    if (hitsTaken < 7) {
-      if (!this.bluetoothConnection.value) {
-        return; // There is no new value
-      }
-
-      const segmentUID = new Uint8Array(
-        this.bluetoothConnection.value.buffer
-      ).join("-");
-      const segmentID = (SEGMENT_MAPPING as any)[segmentUID]; // There is probably a type safe way without resulting to "any"
-
-      if (segmentID !== undefined) {
-        var segmentString = segmentID.toString()
-        this.segmentHitCallback?.(CreateSegment(segmentID));
-
-        hitsTaken += 1;
-        var value = CreateSegment(segmentID)['Value'];
-        totalScore += value;
-
-        const dialog = document.querySelector("dialog");
-        const nameInput = document.querySelector("#nameInput");
-        const emailInput = document.querySelector("#emailInput");
-        const name = nameInput ? (nameInput as HTMLInputElement).placeholder : "";
-        const email = emailInput ? (emailInput as HTMLInputElement).placeholder : "";
-
-        const resultId = 'spanResult' + JSON.stringify(hitsTaken - 1)
-        const resultBox = document.getElementById(resultId);
-        const totalBox = document.getElementById('spanTotal');
-
-        if (resultBox) {
-          resultBox.textContent = JSON.stringify(value);
+    if(!document.querySelector('.swal2-backdrop-show')) {
+      if (hitsTaken < 7) {
+        if (!this.bluetoothConnection.value) {
+          return; // There is no new value
         }
 
-        if (totalBox) {
-          totalBox.textContent = JSON.stringify(totalScore);
-        }
+        const segmentUID = new Uint8Array(
+          this.bluetoothConnection.value.buffer
+        ).join("-");
+        const segmentID = (SEGMENT_MAPPING as any)[segmentUID]; // There is probably a type safe way without resulting to "any"
 
-        if (dialog) {
-          dialog.querySelector("#nameSpan")!.textContent = "Name: " + name;
-          dialog.querySelector("#hitSpan")!.textContent = "Last Hit: " + value;
-          dialog.querySelector("#scoreSpan")!.textContent = "Current Total Score: " + totalScore;
-          dialog.querySelector("#dartsSpan")!.textContent = "Darts Remaining: " + (7 - hitsTaken);
-          // dialog.show();
-        } else {
-          console.log("Dialog element not found.");
-        }
+        if (segmentID !== undefined) {
+          var segmentString = segmentID.toString()
+          this.segmentHitCallback?.(CreateSegment(segmentID));
 
-        if (hitsTaken > 6) {
-          Swal.fire ({
-            title: 'Out of Darts, ' + name + '!',
-            text: 'Your score was: ' + totalScore +  '. \n\nThis has been added to the leaderboard. Want to play again?',
-            icon: 'warning',
-            showConfirmButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'Yes',
-            cancelButtonText: 'No'
-          }).then((result) => {
-            if (result.isConfirmed) {
-               const Toast = Swal.mixin({
-                  toast: true,
-                  position: 'center',
-                  iconColor: 'green',
-                  customClass: {
-                    popup: 'colored-toast',
-                  },
-                  showConfirmButton: false,
-                  timer: 10000,
-                  timerProgressBar: true,
-                })
-              Toast.fire({
-                    icon: 'warning',
-                    title: 'Remove the previous darts now, and get ready to throw!',
-                  });
-              // do nothing
-              // let timerInterval: string | number | NodeJS.Timeout | undefined;
-              //   Swal.fire({
-              //     title: "Go!",
-              //     html: "Begin throwing more darts to continue!",
-              //     timer: 1000,
-              //     timerProgressBar: true,
-              //     didOpen: () => {
-              //       Swal.showLoading();
-              //       const popup = Swal.getPopup();
-              //       const timer = popup ? popup.querySelector("b") : null;
-              //       timerInterval = setInterval(() => {
-              //         if (timer) {
-              //           timer.textContent = `${Swal.getTimerLeft()}`;
-              //         }
-              //       }, 100);
-              //     },
-              //     willClose: () => {
-              //       clearInterval(timerInterval);
-              //     }
-              //   }).then((result) => {
-              //     /* Read more about handling dismissals below */
-              //     if (result.dismiss === Swal.DismissReason.timer) {
-              //       console.log("I was closed by the timer");
-              //     }
-              //   });
-            } else {
-              Swal.fire({
-                    title: "Who's Playing?",
-                    html:
-                    '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
-                    '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-                      '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
-                    focusConfirm: false,
-                    preConfirm: () => {
-                      return [
-                        (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
-                        (document.getElementById('swal-input2') as HTMLInputElement)?.value || "",
-                      ]
-                    }
-                  }).then((result) => {
-                    //reset hits & total
-                    const allResultsSpans = document.getElementsByClassName('spanResult');
-                    Array.from(allResultsSpans).forEach(element => {
-                      element.innerHTML = '';
+          hitsTaken += 1;
+          var value = CreateSegment(segmentID)['Value'];
+          totalScore += value;
+
+          const dialog = document.querySelector("dialog");
+          const nameInput = document.querySelector("#nameInput");
+          const emailInput = document.querySelector("#emailInput");
+          const name = nameInput ? (nameInput as HTMLInputElement).placeholder : "";
+          const email = emailInput ? (emailInput as HTMLInputElement).placeholder : "";
+
+          const resultId = 'spanResult' + JSON.stringify(hitsTaken - 1)
+          const resultBox = document.getElementById(resultId);
+          const totalBox = document.getElementById('spanTotal');
+
+          if (resultBox) {
+            resultBox.textContent = JSON.stringify(value);
+          }
+
+          if (totalBox) {
+            totalBox.textContent = JSON.stringify(totalScore);
+          }
+
+          if (dialog) {
+            dialog.querySelector("#nameSpan")!.textContent = "Name: " + name;
+            dialog.querySelector("#hitSpan")!.textContent = "Last Hit: " + value;
+            dialog.querySelector("#scoreSpan")!.textContent = "Current Total Score: " + totalScore;
+            dialog.querySelector("#dartsSpan")!.textContent = "Darts Remaining: " + (7 - hitsTaken);
+            // dialog.show();
+          } else {
+            console.log("Dialog element not found.");
+          }
+
+          if (hitsTaken > 6) {
+            Swal.fire ({
+              title: 'Out of Darts, ' + name + '!',
+              text: 'Your score was: ' + totalScore +  '. \n\nThis has been added to the leaderboard. Want to play again?',
+              icon: 'warning',
+              showConfirmButton: true,
+              showCancelButton: true,
+              confirmButtonText: 'Yes',
+              cancelButtonText: 'No'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'center',
+                    iconColor: 'green',
+                    customClass: {
+                      popup: 'colored-toast',
+                    },
+                    showConfirmButton: false,
+                    timer: 10000,
+                    timerProgressBar: true,
+                  })
+                Toast.fire({
+                      icon: 'warning',
+                      title: 'Remove the previous darts now, and get ready to throw!',
                     });
-                    const totalSpan = document.getElementById('spanTotal');
-                    if (totalSpan) {
-                      totalSpan.innerHTML = '';
-                    }
+                // do nothing
+                // let timerInterval: string | number | NodeJS.Timeout | undefined;
+                //   Swal.fire({
+                //     title: "Go!",
+                //     html: "Begin throwing more darts to continue!",
+                //     timer: 1000,
+                //     timerProgressBar: true,
+                //     didOpen: () => {
+                //       Swal.showLoading();
+                //       const popup = Swal.getPopup();
+                //       const timer = popup ? popup.querySelector("b") : null;
+                //       timerInterval = setInterval(() => {
+                //         if (timer) {
+                //           timer.textContent = `${Swal.getTimerLeft()}`;
+                //         }
+                //       }, 100);
+                //     },
+                //     willClose: () => {
+                //       clearInterval(timerInterval);
+                //     }
+                //   }).then((result) => {
+                //     /* Read more about handling dismissals below */
+                //     if (result.dismiss === Swal.DismissReason.timer) {
+                //       console.log("I was closed by the timer");
+                //     }
+                //   });
+              } else {
+                Swal.fire({
+                      title: "Who's Playing?",
+                      html:
+                      '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
+                      '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
+                        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+                      focusConfirm: false,
+                      preConfirm: () => {
+                        return [
+                          (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
+                          (document.getElementById('swal-input2') as HTMLInputElement)?.value || "",
+                        ]
+                      }
+                    }).then((result) => {
+                      //reset hits & total
+                      const allResultsSpans = document.getElementsByClassName('spanResult');
+                      Array.from(allResultsSpans).forEach(element => {
+                        element.innerHTML = '';
+                      });
+                      const totalSpan = document.getElementById('spanTotal');
+                      if (totalSpan) {
+                        totalSpan.innerHTML = '';
+                      }
 
-                    if (result.value) {
-                        const nameInput = document.getElementById('nameInput') as HTMLInputElement || "";
-                        const emailInput = document.getElementById('emailInput') as HTMLInputElement || "";
-                        if (nameInput) {
-                          nameInput.innerHTML = result.value[0];
-                          nameInput.placeholder = result.value[0];
-                        }
-                        if (emailInput) {
-                          emailInput.innerHTML = result.value[1];
-                          emailInput.placeholder = result.value[1];
-                        }
-                    }
-                  });
-            }
-          });
-          loadFileFromPath([name, email, totalScore, new Date().toLocaleDateString('en-GB')]);
-          console.log('loading leader sheet');
-          const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx");
-          if (!response.ok) {
-              throw new Error(`Failed to fetch file: ${response.statusText}`);
-            }
-          const arrayBuffer = await response.arrayBuffer();
-          const workbook = new Excel.Workbook();
-          workbook.xlsx
-            .load(arrayBuffer)
-            .then(async (workbook) => {
-              workbook.eachSheet((sheet) => {
-                var nameExists = false;
-                var emailExists = false;
-                var scoreExists = false;
-                var dateExists = false;
-
-                // find out if record exists, if not dont add it
-                sheet.eachRow((row, rowIndex) => {
-                  row.eachCell((cell, cellIndex) => {
-                    if (cellIndex === 1 && cell.value === name) {
-                      nameExists = true;
-                      console.log('NAME EXISTS');
-                    }
-                    if (cellIndex === 2 && cell.value === email) {
-                      emailExists = true;
-                      console.log('EMAIL EXISTS');
-                    }
-                    if (cellIndex === 3 && cell.value === totalScore) { 
-                      scoreExists = true;
-                      console.log('SCORE EXISTS');
-                    }
-                    if (cellIndex === 4 && cell.value === new Date().toLocaleDateString('en-GB')) {
-                      dateExists = true;
-                      console.log('DATE EXISTS');
-                    }
-                   });
-                });
-                if (nameExists && emailExists && scoreExists && dateExists) {
-                  // console.log('Record already exists, not adding a new one.');
-                }
-                else {
-                    sheet.addRow([name, email, totalScore, new Date().toLocaleDateString('en-GB')]);
-                saveWorkbookToServer(workbook);
-                // console.log('ADDING NEW RECORD')
-                }
-                totalScore = 0;
-                hitsTaken = 1;
-                //reset hits & total
-                const allResultsSpans = document.getElementsByClassName('spanResult');
-                Array.from(allResultsSpans).forEach(element => {
-                  element.innerHTML = '';
-                });
-                const totalSpan = document.getElementById('spanTotal');
-                if (totalSpan) {
-                  totalSpan.innerHTML = '';
-                }
-              })})
-            .catch((error) => {
-              console.error("Error reading Excel file:", error);
+                      if (result.value) {
+                          const nameInput = document.getElementById('nameInput') as HTMLInputElement || "";
+                          const emailInput = document.getElementById('emailInput') as HTMLInputElement || "";
+                          if (nameInput) {
+                            nameInput.innerHTML = result.value[0];
+                            nameInput.placeholder = result.value[0];
+                          }
+                          if (emailInput) {
+                            emailInput.innerHTML = result.value[1];
+                            emailInput.placeholder = result.value[1];
+                          }
+                      }
+                    });
+              }
             });
-        }
+            loadFileFromPath([name, email, totalScore, new Date().toLocaleDateString('en-GB')]);
+            console.log('loading leader sheet');
+            const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx");
+            if (!response.ok) {
+                throw new Error(`Failed to fetch file: ${response.statusText}`);
+              }
+            const arrayBuffer = await response.arrayBuffer();
+            const workbook = new Excel.Workbook();
+            workbook.xlsx
+              .load(arrayBuffer)
+              .then(async (workbook) => {
+                workbook.eachSheet((sheet) => {
+                  var nameExists = false;
+                  var emailExists = false;
+                  var scoreExists = false;
+                  var dateExists = false;
 
-      } else {
-        // console.log('Unknown segment: ' + segmentUID);
+                  // find out if record exists, if not dont add it
+                  sheet.eachRow((row, rowIndex) => {
+                    row.eachCell((cell, cellIndex) => {
+                      if (cellIndex === 1 && cell.value === name) {
+                        nameExists = true;
+                        console.log('NAME EXISTS');
+                      }
+                      if (cellIndex === 2 && cell.value === email) {
+                        emailExists = true;
+                        console.log('EMAIL EXISTS');
+                      }
+                      if (cellIndex === 3 && cell.value === totalScore) { 
+                        scoreExists = true;
+                        console.log('SCORE EXISTS');
+                      }
+                      if (cellIndex === 4 && cell.value === new Date().toLocaleDateString('en-GB')) {
+                        dateExists = true;
+                        console.log('DATE EXISTS');
+                      }
+                    });
+                  });
+                  if (nameExists && emailExists && scoreExists && dateExists) {
+                    // console.log('Record already exists, not adding a new one.');
+                  }
+                  else {
+                      sheet.addRow([name, email, totalScore, new Date().toLocaleDateString('en-GB')]);
+                  saveWorkbookToServer(workbook);
+                  console.log('ADDING NEW RECORD')
+                  }
+                  totalScore = 0;
+                  hitsTaken = 1;
+                  //reset hits & total
+                  const allResultsSpans = document.getElementsByClassName('spanResult');
+                  Array.from(allResultsSpans).forEach(element => {
+                    element.innerHTML = '';
+                  });
+                  const totalSpan = document.getElementById('spanTotal');
+                  if (totalSpan) {
+                    totalSpan.innerHTML = '';
+                  }
+                })})
+              .catch((error) => {
+                console.error("Error reading Excel file:", error);
+              });
+          }
+
+        } else {
+          // console.log('Unknown segment: ' + segmentUID);
+        }
       }
     }
     else {
