@@ -196,7 +196,7 @@ export class Granboard {
 
   private async onSegmentHit() {
     const nameInputElement = document.querySelector('#nameInput') as HTMLInputElement | null;
-    if (!nameInputElement || !nameInputElement.value) {
+    if (!nameInputElement || !nameInputElement.placeholder) {
       Swal.fire({
         title: "Who's Playing?",
         html:
