@@ -18,21 +18,20 @@ export default function Home() {
     try {
       const buffer = await workbook.xlsx.writeBuffer();
       const base64Data = Buffer.from(buffer).toString("base64");
-      console.log('saving leader sheet');
-
-      const response = await fetch('/api/save-leaderboard', {
+  
+      const response = await fetch("/api/save-leaderboard", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
       });
-
+  
       if (!response.ok) {
         throw new Error(`Failed to save file: ${response.statusText}`);
       }
-
+  
       console.log("File saved successfully on the server.");
     } catch (error) {
-      console.error("Error saving file to server:", error);
+      console.error("Error saving file:", error);
     }
   };
   const saveWinnerWorkbookToServer = async (workbook2: Excel.Workbook) => {
