@@ -2,10 +2,11 @@
 
 import { Granboard } from "../services/granboard";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 import Excel from "exceljs";
 import 'animate.css';
 import Swal from "sweetalert2";
+import { list } from '@vercel/blob';
 
 
 type Player = {
@@ -45,7 +46,14 @@ const readDataFromFile = (data: ArrayBuffer) => {
     });
 };
 
-export default function Home() {
+export default async function Home() {
+  const responseblob = await list();
+  {responseblob.blobs.map((blob: { pathname: boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | Promise<AwaitedReactNode> | Key | null | undefined; downloadUrl: string | undefined; }) => (
+    <a key={String(blob.pathname)} href={blob.downloadUrl}>
+      {blob.pathname}
+    </a>
+  ))}
+  console.log(responseblob);
   const [granboard, setGranboard] = useState<Granboard>();
   const [connectionState, setConnectionState] = useState<
     "Click Here To Connect" | "Connecting..." | "Connected" | "Error - please click to retry."
