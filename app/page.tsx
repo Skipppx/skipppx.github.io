@@ -144,14 +144,6 @@ export default async function Home() {
           }
       }
     });
-  
-    if (typeof window !== "undefined" && document) {
-      const bodyElement = document.querySelector("body");
-      if (bodyElement) {
-        bodyElement.requestFullscreen();
-        console.log('fullscreen')
-      }
-    }
 
     const canvas = canvasRef.current;
     if (!canvas) return;
