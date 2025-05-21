@@ -15,7 +15,6 @@ export default function Home() {
   const workbook = new Excel.Workbook();
   const workbook2 = new Excel.Workbook();
 
-
   const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
     try {
       const buffer = await workbook.xlsx.writeBuffer();
@@ -160,6 +159,8 @@ export default function Home() {
     workbook.xlsx
       .load(data)
       .then(async (workbook) => {
+        console.log('data' + data)
+        console.log('data' + JSON.stringify(data));
         if (!document.querySelector("table")) {
         workbook.eachSheet((sheet) => {
           //sort rows by score
