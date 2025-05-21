@@ -146,7 +146,7 @@ export default function Home() {
   const loadFileFromPath = async () => {
     try {
       console.log('loading leader sheet from Google Cloud Storage');
-      const response = await fetch("https://storage.googleapis.com/kid-a/2.xlsx", {
+      const response = await fetch("https://storage.googleapis.com/kid-a/pastwinners2.xlsx", {
         mode: "cors", // Ensure CORS mode is enabled
         // method: "POST",
       });

@@ -46,7 +46,7 @@ export default function Home() {
 
       const response = await fetch('/api/save-pastwinners', {
         mode: 'cors',
-        method: "POST",
+        // method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
       });
@@ -85,9 +85,16 @@ export default function Home() {
                   var checkWeek = addWeeks(1, oldDate);
                   // if it has been more than or exactly 7 days since the last winner
                   if (checkWeek <= newDate) {
+                    const buffer2 = await workbook2.xlsx.writeBuffer();
+                    const base64Data = Buffer.from(buffer2).toString("base64");
                     // console.log('It has been 7 days or more - resetting');
-                    const response1 = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx");
-                    if (!response1.ok) {
+                    const response1 = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
+                      mode: "cors",
+                      // method: "POST",
+                      // method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ workbookData: base64Data }),
+                    });                    if (!response1.ok) {
                       throw new Error(`Failed to fetch file: ${response1.statusText}`);
                     }
                     const arrayBuffer = await response1.arrayBuffer();
