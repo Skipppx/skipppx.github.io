@@ -256,8 +256,12 @@ export default function Home() {
 
   const loadFileFromPath = async () => {
     try {
-      console.log('loading leaderboard sheet');
-      const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx");
+      console.log('loading leaderboard sheet from cloud');
+      const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
+        mode: "cors",
+        method: "POST",
+      });
+
       if (!response.ok) {
         throw new Error(`Failed to fetch file: ${response.statusText}`);
       }
@@ -272,8 +276,11 @@ export default function Home() {
 
   const loadWinnersFileFromPath = async () => {
     try {
-      console.log('loading winner sheet');
-      const response = await fetch("https://storage.googleapis.com/kid-a/pastwinners.xlsx");
+      console.log('loading winner sheet from cloud');
+      const response = await fetch("https://storage.googleapis.com/kid-a/pastwinners.xlsx", {
+        mode: "cors", // Ensure CORS mode is enabled
+        method: "POST",
+      });      
       if (!response.ok) {
         throw new Error(`Failed to fetch file: ${response.statusText}`);
       }

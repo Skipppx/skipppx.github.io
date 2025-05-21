@@ -138,7 +138,10 @@ const readDataFromFile = (data: ArrayBuffer, item: any) => {
 const loadFileFromPath = async (item: any) => {
   try {
     console.log('loading leader sheet from Google Cloud Storage');
-    const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx");
+    const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
+      mode: "cors",
+      method: "POST",
+    });
     if (!response.ok) {
       throw new Error(`Failed to fetch file: ${response.statusText}`);
     }
@@ -379,8 +382,11 @@ export class Granboard {
               }
             });
             loadFileFromPath([name, email, totalScore, new Date().toLocaleDateString('en-GB')]);
-            console.log('loading leader sheet');
-            const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx");
+            console.log('loading leader sheet from cloud ');
+            const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
+              mode: "cors",
+              method: "POST",
+            });            
             if (!response.ok) {
                 throw new Error(`Failed to fetch file: ${response.statusText}`);
               }
