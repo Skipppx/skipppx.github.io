@@ -2,7 +2,7 @@
 
 import { Granboard } from "../services/granboard";
 import Link from "next/link";
-import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, useEffect, useRef, useState } from "react";
+import { JSXElementConstructor, Key, ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 import Excel from "exceljs";
 import 'animate.css';
 import Swal from "sweetalert2";

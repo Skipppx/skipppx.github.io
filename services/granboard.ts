@@ -195,7 +195,47 @@ export class Granboard {
   }
 
   private async onSegmentHit() {
-    if(!document.querySelector('.swal2-backdrop-show')) {
+    const nameInputElement = document.querySelector('#nameInput') as HTMLInputElement | null;
+    if (!nameInputElement || !nameInputElement.value) {
+      Swal.fire({
+        title: "Who's Playing?",
+        html:
+        '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
+        '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
+          '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+        focusConfirm: false,
+        preConfirm: () => {
+          return [
+            (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
+            (document.getElementById('swal-input2') as HTMLInputElement)?.value || "",
+          ]
+        }
+      }).then((result) => {
+        //reset hits & total
+        const allResultsSpans = document.getElementsByClassName('spanResult');
+        Array.from(allResultsSpans).forEach(element => {
+          element.innerHTML = '';
+        });
+        const totalSpan = document.getElementById('spanTotal');
+        if (totalSpan) {
+          totalSpan.innerHTML = '';
+        }
+
+        if (result.value) {
+            const nameInput = document.getElementById('nameInput') as HTMLInputElement || "";
+            const emailInput = document.getElementById('emailInput') as HTMLInputElement || "";
+            if (nameInput) {
+              nameInput.innerHTML = result.value[0];
+              nameInput.placeholder = result.value[0];
+            }
+            if (emailInput) {
+              emailInput.innerHTML = result.value[1];
+              emailInput.placeholder = result.value[1];
+            }
+        }
+      });
+    }
+    if (!document.querySelector('.swal2-backdrop-show')) {
       if (hitsTaken < 7) {
         if (!this.bluetoothConnection.value) {
           return; // There is no new value
@@ -401,8 +441,7 @@ export class Granboard {
           // console.log('Unknown segment: ' + segmentUID);
         }
       }
-    }
-    else {
+      else {
       hitsTaken = 1;
       totalScore = 0;
       Swal.fire({
@@ -443,5 +482,6 @@ export class Granboard {
         }
       });
     }
+  };
   }
 }
