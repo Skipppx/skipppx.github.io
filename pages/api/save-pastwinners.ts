@@ -39,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Upload the buffer directly to Google Cloud Storage
     const bucket = storage.bucket(bucketName);
-    const file = bucket.file("pastwinners2.xlsx");
+    const file = bucket.file("pastwinners.xlsx");
 
     await file.save(new Uint8Array(workbookBuffer), {
       contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
