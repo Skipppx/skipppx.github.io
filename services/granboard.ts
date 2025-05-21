@@ -106,7 +106,7 @@ const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
       const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
         mode: 'cors',
         // method: "POST",
-        headers: { "Content-Type": "application/json" },
+        // headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
       });
 
