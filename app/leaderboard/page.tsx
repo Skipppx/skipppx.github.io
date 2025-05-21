@@ -85,7 +85,7 @@ console.log("Google Cloud Storage Bucket:", process.env.GOOGLE_CLOUD_STORAGE_BUC
                   // if it has been more than or exactly 7 days since the last winner
                   if (checkWeek <= newDate) {
                     // console.log('It has been 7 days or more - resetting');
-                    const response1 = await fetch("data/leaderboard.xlsx");
+                    const response1 = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx");
                     if (!response1.ok) {
                       throw new Error(`Failed to fetch file: ${response1.statusText}`);
                     }
@@ -257,7 +257,7 @@ console.log("Google Cloud Storage Bucket:", process.env.GOOGLE_CLOUD_STORAGE_BUC
   const loadFileFromPath = async () => {
     try {
       console.log('loading leaderboard sheet');
-      const response = await fetch("data/leaderboard.xlsx");
+      const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx");
       if (!response.ok) {
         throw new Error(`Failed to fetch file: ${response.statusText}`);
       }
@@ -273,7 +273,7 @@ console.log("Google Cloud Storage Bucket:", process.env.GOOGLE_CLOUD_STORAGE_BUC
   const loadWinnersFileFromPath = async () => {
     try {
       console.log('loading winner sheet');
-      const response = await fetch("data/pastwinners.xlsx");
+      const response = await fetch("https://storage.googleapis.com/kid-a/pastwinners.xlsx");
       if (!response.ok) {
         throw new Error(`Failed to fetch file: ${response.statusText}`);
       }
