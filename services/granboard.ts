@@ -207,8 +207,10 @@ export class Granboard {
         html:
         '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
         '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-          '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+          '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
+          '<span class="swal-red">Email is only required if you want to enter the weekly leaderboard, just so we know who to contact!</span>',
         focusConfirm: false,
+        allowEnterKey: true,
         preConfirm: () => {
           return [
             (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
@@ -347,8 +349,10 @@ export class Granboard {
                       html:
                       '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
                       '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-                        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+                        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
+                        '<span class="swal-red">Email is only required if you want to enter the weekly leaderboard, just so we know who to contact!</span>',
                       focusConfirm: false,
+                      allowEnterKey: true,
                       preConfirm: () => {
                         return [
                           (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
@@ -456,11 +460,13 @@ export class Granboard {
       totalScore = 0;
       Swal.fire({
         allowOutsideClick: false,
+        allowEnterKey: true,
         title: "Who's Playing?",
         html:
         '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
         '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-          '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+          '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
+          '<span class="swal-red">Email is only required if you want to enter the weekly leaderboard, just so we know who to contact!</span>',
         focusConfirm: false,
         preConfirm: () => {
           return [

@@ -83,19 +83,23 @@ export default function Home() {
 
   const loadFileFromPath = async () => {
     try {
+      console.log('loading leaderboard sheet from cloud');
       const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
-        mode: "cors", // Ensure CORS mode is enabled\
-        // method: 'POST',
+        mode: "cors",
+        // method: "POST",
       });
+
       if (!response.ok) {
-      throw new Error(`Failed to fetch file: ${response.statusText}`);
-    }
+        throw new Error(`Failed to fetch file: ${response.statusText}`);
+      }
       const arrayBuffer = await response.arrayBuffer();
       readDataFromFile(arrayBuffer);
     } catch (error) {
       console.error("Error loading file:", error);
-    }
-  };
+    }  };
+  useEffect(() => {
+    loadFileFromPath();
+  }, []);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -108,8 +112,10 @@ export default function Home() {
       html:
       '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span> <br>' + 
       '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
+        '<span class="swal-red">Email is only required if you want to enter the weekly leaderboard, just so we know who to contact!</span>',
       focusConfirm: false,
+      allowEnterKey: true,
       preConfirm: () => {
         return [
           (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
