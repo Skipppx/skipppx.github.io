@@ -259,7 +259,7 @@ export default function Home() {
       console.log('loading leaderboard sheet from cloud');
       const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
         mode: "cors",
-        method: "POST",
+        // method: "POST",
       });
 
       if (!response.ok) {
@@ -279,7 +279,7 @@ export default function Home() {
       console.log('loading winner sheet from cloud');
       const response = await fetch("https://storage.googleapis.com/kid-a/pastwinners.xlsx", {
         mode: "cors", // Ensure CORS mode is enabled
-        method: "POST",
+        // method: "POST",
       });      
       if (!response.ok) {
         throw new Error(`Failed to fetch file: ${response.statusText}`);

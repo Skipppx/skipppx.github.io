@@ -148,7 +148,7 @@ export default function Home() {
       console.log('loading leader sheet from Google Cloud Storage');
       const response = await fetch("https://storage.googleapis.com/kid-a/pastwinners.xlsx", {
         mode: "cors", // Ensure CORS mode is enabled
-        method: "POST",
+        // method: "POST",
       });
       if (!response.ok) {
         throw new Error(`Failed to fetch file: ${response.statusText}`);
