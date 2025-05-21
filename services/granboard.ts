@@ -103,7 +103,7 @@ const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
       const base64Data = Buffer.from(buffer).toString("base64");
       console.log('saving leaderboard sheet');
 
-      const response = await fetch('/api/save-leaderboard', {
+      const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
         mode: 'cors',
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -114,7 +114,7 @@ const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
         throw new Error(`Failed to save file: ${response.statusText}`);
       }
 
-      console.log("File saved successfully on the server.");
+      console.log("File saved successfully on the CLOUD server.");
     } catch (error) {
       console.error("Error saving file to server:", error);
     }
