@@ -8,11 +8,6 @@ import 'animate.css';
 import Swal from "sweetalert2";
 import { list } from '@vercel/blob';
 
-const bodyElement = document.querySelector("body");
-if (bodyElement) {
-  bodyElement.requestFullscreen();
-}
-
 
 type Player = {
   id: number;
@@ -67,10 +62,7 @@ export default async function Home() {
     fetchData();
   }, []);
   console.log(responseblob);
-  const bodyElement = document.querySelector("body");
-if (bodyElement) {
-  bodyElement.requestFullscreen();
-}
+
   const [granboard, setGranboard] = useState<Granboard>();
   const [connectionState, setConnectionState] = useState<
     "Click Here To Connect" | "Connecting..." | "Connected" | "Error - please click to retry."
@@ -153,6 +145,13 @@ if (bodyElement) {
       }
     });
   
+    if (typeof window !== "undefined" && document) {
+      const bodyElement = document.querySelector("body");
+      if (bodyElement) {
+        bodyElement.requestFullscreen();
+        console.log('fullscreen')
+      }
+    }
 
     const canvas = canvasRef.current;
     if (!canvas) return;
