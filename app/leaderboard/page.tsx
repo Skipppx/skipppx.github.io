@@ -13,7 +13,10 @@ export default function Home() {
   const workbook = new Excel.Workbook();
   const workbook2 = new Excel.Workbook();
 
+  console.log("Google Cloud Project:", process.env.GOOGLE_CLOUD_PROJECT);
+console.log("Google Cloud Storage Bucket:", process.env.GOOGLE_CLOUD_STORAGE_BUCKET);
 
+  
   const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
     try {
       const buffer = await workbook.xlsx.writeBuffer();
