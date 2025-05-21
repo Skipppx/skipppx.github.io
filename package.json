@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^7.16.0",
+    "@vercel/blob": "^1.0.2",
     "animate.css": "^4.1.1",
     "csvtojson": "^2.0.10",
     "exceljs": "^4.4.0",
