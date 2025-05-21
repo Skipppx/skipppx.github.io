@@ -159,8 +159,8 @@ export default function Home() {
     workbook.xlsx
       .load(data)
       .then(async (workbook) => {
-        console.log('data' + data)
-        console.log('data' + JSON.stringify(data));
+        console.log('data' + workbook)
+        console.log('data' + JSON.stringify(workbook));
         if (!document.querySelector("table")) {
         workbook.eachSheet((sheet) => {
           //sort rows by score
