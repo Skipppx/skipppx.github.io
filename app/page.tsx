@@ -108,8 +108,7 @@ export default function Home() {
       html:
       '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span> <br>' + 
       '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
-        '<br><span class="swal-red">Email is only necessary to enter the weekly leaderboard, so that we can contact you if you win.</span>',
+        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
       focusConfirm: false,
       preConfirm: () => {
         return [

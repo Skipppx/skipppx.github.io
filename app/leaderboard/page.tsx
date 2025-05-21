@@ -20,18 +20,20 @@ export default function Home() {
       const buffer = await workbook.xlsx.writeBuffer();
       const base64Data = Buffer.from(buffer).toString("base64");
   
-      const response = await fetch("/api/save-leaderboard", {
+      const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
         mode: "cors",
         // method: "POST",
-        // headers: { "Content-Type": "application/json" },
-        // body: JSON.stringify({ workbookData: base64Data }),
+        // method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ workbookData: base64Data }),
       });
   
       if (!response.ok) {
+        console.log('here')
         throw new Error(`Failed to save file: ${response.statusText}`);
       }
   
-      console.log("File saved successfully on the CLOUD server.");
+      console.log("File saved successfully on the server.");
     } catch (error) {
       console.error("Error saving file:", error);
     }

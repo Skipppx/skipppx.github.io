@@ -103,9 +103,9 @@ const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
       const base64Data = Buffer.from(buffer).toString("base64");
       console.log('saving leaderboard sheet');
 
-      const response = await fetch("/api/save-leaderboard", {
+      const response = await fetch('/api/save-leaderboard', {
         mode: 'cors',
-        // method: "POST",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
       });
@@ -114,7 +114,7 @@ const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
         throw new Error(`Failed to save file: ${response.statusText}`);
       }
 
-      console.log("File saved successfully on the CLOUD server.");
+      console.log("File saved successfully on the server.");
     } catch (error) {
       console.error("Error saving file to server:", error);
     }
@@ -207,9 +207,8 @@ export class Granboard {
         html:
         '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
         '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
-        '<br><span class="swal-red">Email is only necessary to enter the weekly leaderboard, so that we can contact you if you win.</span>',
-      focusConfirm: false,
+          '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+        focusConfirm: false,
         preConfirm: () => {
           return [
             (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
@@ -308,7 +307,7 @@ export class Granboard {
                       popup: 'colored-toast',
                     },
                     showConfirmButton: false,
-                    timer: 8000,
+                    timer: 10000,
                     timerProgressBar: true,
                   })
                 Toast.fire({
@@ -348,8 +347,7 @@ export class Granboard {
                       html:
                       '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
                       '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-                      '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
-                        '<br><span class="swal-red">Email is only necessary to enter the weekly leaderboard, so that we can contact you if you win.</span>',
+                        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
                       focusConfirm: false,
                       preConfirm: () => {
                         return [
@@ -462,9 +460,8 @@ export class Granboard {
         html:
         '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
         '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
-        '<br><span class="swal-red">Email is only necessary to enter the weekly leaderboard, so that we can contact you if you win.</span>',
-      focusConfirm: false,
+          '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+        focusConfirm: false,
         preConfirm: () => {
           return [
             (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
