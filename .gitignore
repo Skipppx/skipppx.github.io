@@ -16,6 +16,8 @@
 # next.js
 /.next/
 
+/google-cloud-sdk/
+
 # The `out` directory should not be ignored by version control
 # /out/
 
