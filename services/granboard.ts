@@ -259,12 +259,12 @@ export class Granboard {
                     popup: 'colored-toast',
                   },
                   showConfirmButton: false,
-                  timer: 2000,
+                  timer: 10000,
                   timerProgressBar: true,
                 })
               Toast.fire({
                     icon: 'warning',
-                    title: 'Get ready to throw!',
+                    title: 'Remove the previous darts now, and get ready to throw!',
                   });
               // do nothing
               // let timerInterval: string | number | NodeJS.Timeout | undefined;
@@ -296,7 +296,7 @@ export class Granboard {
               Swal.fire({
                     title: "Who's Playing?",
                     html:
-                    'Please remove darts before playing! <br>' + 
+                    'Please get your darts ready, and remove any remaining on the board! <br>' + 
                     '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
                       '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
                     focusConfirm: false,
@@ -405,8 +405,8 @@ export class Granboard {
       Swal.fire({
         title: "Who's Playing?",
         html:
-        'Please remove darts before playing! <br>' + 
-          '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
+        'Please get your darts ready, and remove any remaining on the board! <br>' + 
+        '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
           '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
         focusConfirm: false,
         preConfirm: () => {

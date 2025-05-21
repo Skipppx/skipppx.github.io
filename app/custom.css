@@ -33,17 +33,23 @@ button, [type='button'], [type='reset'], [type='submit'] {
   margin: 0 auto;
 }
 
-.connectButton {
+#taptoplay, #taptoLeader {
   position: fixed;
   bottom: 1em;
   right: 2em;
-  width: 15%;
-  font-size: .70em;
-  background-color: rgb(0, 0, 0, 0.1)!important;
-  backdrop-filter: blur(4px);
+  /* width: 15%; */
   font-weight: bold;
 }
-
+.connectButton {
+  background-color: rgb(0, 0, 0, 0.1)!important;
+  backdrop-filter: blur(4px);
+  position: fixed;
+  bottom: 1em;
+  left: 1.5em;
+  font-size: 1em;
+  width: 15%;
+  font-weight: bold;
+}
 a {
   color: white;
   padding: 1.2em!important;
@@ -284,5 +290,36 @@ tbody th {
     position: fixed;
     top: 2em;
     right: 2em;
+  }
+
+  .swal2-input {
+    margin: .5em auto;
+  }
+
+  #taptoplay, #taptoLeader {
+    background-color: black;
+    border-radius: 100%;
+    width: 6.5em;
+    height: 6.5em;
+  }
+
+  #tapSpan {
+    position: absolute;
+    font-size: 1.8em;
+    bottom: 25%;
+    left: 1%;
+  }
+
+  #taptoLeader {
+    bottom: 1em;
+    width: 6em;
+    height: 6em;
+    right: 1em;
+  }
+  #tapLeaderboard {
+    position: absolute;
+    font-size: 1.1em;
+    bottom: 35%;
+    left: 0;
   }
   /* } */

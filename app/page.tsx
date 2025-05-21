@@ -102,7 +102,7 @@ export default function Home() {
       Swal.fire({
       title: "Who's Playing?",
       html:
-      'Please remove darts before playing! <br>' + 
+      'Please get your darts ready, and remove any remaining on the board! <br>' + 
       '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
         '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
       focusConfirm: false,
@@ -255,6 +255,12 @@ export default function Home() {
           <div id="totalBox"><span id="titleTotal">Total</span><span id="spanTotal"></span></div>
           </div>
         <canvas className={'canvasdb'} ref={canvasRef} width={500} height={500} />
+          <Link
+          href="/leaderboard"
+          id="taptoLeader"
+        >
+          <span id='tapLeaderboard'>Tap for Leaderboard!</span>
+        </Link>
         <div className="items-center">
           <button
             className="connectButton text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
