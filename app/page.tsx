@@ -102,7 +102,7 @@ export default function Home() {
       Swal.fire({
       title: "Who's Playing?",
       html:
-      'Please get your darts ready, and remove any remaining on the board! <br>' + 
+      '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span> <br>' + 
       '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
         '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
       focusConfirm: false,

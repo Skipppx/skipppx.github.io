@@ -148,6 +148,10 @@ input {
   margin: 0 auto;
 }
 
+.swal-red {
+  color: #ebac1a;
+}
+
 #tableLeaderboard table {
   margin: 0 auto;
   margin-top: 3em;
