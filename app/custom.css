@@ -120,7 +120,7 @@ input {
   color: white;
 }
 #emailInput {
-  top: 1em;
+  top: .8em;
   margin-left: 1em;
   transform: rotate(3deg);
   font-size: 1.2em;

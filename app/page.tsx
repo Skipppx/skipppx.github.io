@@ -46,7 +46,7 @@ const readDataFromFile = (data: ArrayBuffer) => {
     });
 };
 
-export default async function Home() {
+export default function Home() {
   // const [responseblob, setResponseBlob] = useState<any>(null);
   // useEffect(() => {
   //   const fetchData = async () => {

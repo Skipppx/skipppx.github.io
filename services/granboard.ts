@@ -195,6 +195,7 @@ export class Granboard {
   }
 
   private async onSegmentHit() {
+    //ADD THIS if no swal alert currently
     if (hitsTaken < 7) {
       if (!this.bluetoothConnection.value) {
         return; // There is no new value
