@@ -6,7 +6,7 @@ import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, 
 import Excel from "exceljs";
 import 'animate.css';
 import Swal from "sweetalert2";
-import { list } from '@vercel/blob';
+// import { list } from '@vercel/blob';
 
 
 type Player = {
@@ -47,21 +47,21 @@ const readDataFromFile = (data: ArrayBuffer) => {
 };
 
 export default async function Home() {
-  const [responseblob, setResponseBlob] = useState<any>(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await list();
-        setResponseBlob(response);
-        console.log(response);
-      } catch (error) {
-        console.error("Error fetching blobs:", error);
-      }
-    };
+  // const [responseblob, setResponseBlob] = useState<any>(null);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await list();
+  //       setResponseBlob(response);
+  //       console.log(response);
+  //     } catch (error) {
+  //       console.error("Error fetching blobs:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
-  console.log(responseblob);
+  //   fetchData();
+  // }, []);
+  // console.log(responseblob);
 
   const [granboard, setGranboard] = useState<Granboard>();
   const [connectionState, setConnectionState] = useState<
