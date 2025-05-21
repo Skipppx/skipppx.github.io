@@ -252,6 +252,8 @@ tbody th {
   position: absolute;
   top: .7em;
   left: .2em;
+  z-index: 999999;
+  color: white;
 }
 
 .spanResult {

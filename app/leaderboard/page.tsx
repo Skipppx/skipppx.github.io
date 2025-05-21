@@ -94,7 +94,7 @@ export default function Home() {
                     });                    
                     if (!response1.ok) {
                       throw new Error(`Failed to fetch file: ${response1.statusText}`);
-                    } 
+                    }
                     const arrayBuffer = await response1.arrayBuffer();
                     workbook.xlsx
                     .load(arrayBuffer)
@@ -302,7 +302,8 @@ export default function Home() {
 
   
 
-  return (    <main className="flex min-h-screen flex-col items-start gap-4 px-24 py-10">
+  return (    
+  <main className="flex min-h-screen flex-col items-start gap-4 px-24 py-10">
       <div className="w-full h-20 text-white font-medium rounded-lg text-4xl px-5 py-2.5 text-left">
       </div>
       <div id="tableLeaderboard">
