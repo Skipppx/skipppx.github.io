@@ -4,7 +4,7 @@ import { Granboard } from "@/services/granboard";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Excel, { CellValue, Worksheet } from "exceljs";
-import { Storage } from "@google-cloud/storage";
+// import { Storage } from "@google-cloud/storage";
 
 export default function Home() {
 
@@ -14,8 +14,7 @@ export default function Home() {
   var position = 1;
   const workbook = new Excel.Workbook();
   const workbook2 = new Excel.Workbook();
-  console.log('storage' + Storage)
-  console.log(JSON.stringify(Storage))
+
 
   const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
     try {

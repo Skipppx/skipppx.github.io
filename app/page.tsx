@@ -101,21 +101,9 @@ export default async function Home() {
 
 
   useEffect(() => {
-   const Toast = Swal.mixin({
-                     toast: true,
-                     position: 'center',
-                     iconColor: 'green',
-                     customClass: {
-                       popup: 'colored-toast',
-                     },
-                     showConfirmButton: false,
-                     timer: 2000,
-                     timerProgressBar: true,
-                   })
-                 Toast.fire({
-                       icon: 'warning',
-                       title: 'Get ready to throw!',
-                     });
+    Swal.fire({
+      title: "Who's Playing?",
+    });
       Swal.fire({
       title: "Who's Playing?",
       html:
