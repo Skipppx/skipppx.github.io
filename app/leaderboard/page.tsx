@@ -278,7 +278,7 @@ export default function Home() {
   const loadWinnersFileFromPath = async () => {
     try {
       console.log('loading winner sheet from cloud');
-      const response = await fetch("https://storage.googleapis.com/kid-a/pastwinners.xlsx", {
+      const response = await fetch("https://storage.googleapis.com/kid-a/pastwinners2.xlsx", {
         mode: "cors", // Ensure CORS mode is enabled
         // method: "POST",
       });      

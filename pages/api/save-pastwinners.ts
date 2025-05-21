@@ -28,13 +28,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       await workbook.xlsx.load(Buffer.from(workbookData, "base64") as unknown as Excel.Buffer);
   
       // Save the workbook to a temporary file in /tmp
-      const tmpFilePath = path.join("/tmp", "pastwinners.xlsx");
+      const tmpFilePath = path.join("/tmp", "pastwinners2.xlsx");
       await workbook.xlsx.writeFile(tmpFilePath);
   
       // Upload the file to Google Cloud Storage
       const bucket = storage.bucket(bucketName);
       await bucket.upload(tmpFilePath, {
-        destination: "pastwinners.xlsx", // File name in the bucket
+        destination: "pastwinners2.xlsx", // File name in the bucket
         contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       });
   
