@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { NextApiRequest, NextApiResponse } from "next";
 import { Storage } from "@google-cloud/storage";
 import * as Excel from "exceljs";

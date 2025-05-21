@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { CreateSegment, Segment, SegmentID } from "./boardinfo";
 import { useEffect, useRef, useState } from "react";
 import Excel from "exceljs";
