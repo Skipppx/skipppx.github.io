@@ -161,7 +161,6 @@ export default function Home() {
       .then(async (workbook) => {
         if (!document.querySelector("table")) {
         workbook.eachSheet((sheet) => {
-          console.log(sheet)
           //sort rows by score
           function sortColumn(worksheet: Worksheet, column: number, h2l: boolean = true, startRow: number = 1, endRow?: number): void {
             endRow = endRow || worksheet.actualRowCount;
