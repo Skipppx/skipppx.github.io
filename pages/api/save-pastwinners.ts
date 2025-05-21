@@ -14,9 +14,11 @@ const storage = new Storage({
 const bucketName = process.env.GOOGLE_CLOUD_STORAGE_BUCKET || "kid-a";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+  // if (req.method !== "POST") {
+  //   return res.status(405).json({ error: "Method not allowed" });
+  // }
+  console.log('REQ METHOD ' + req.method);
+
 
   try {
       const { workbookData } = req.body;

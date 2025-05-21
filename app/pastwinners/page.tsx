@@ -18,6 +18,7 @@ export default function Home() {
       console.log('saving winner sheet');
 
       const response = await fetch('/api/save-pastwinners', {
+        mode: 'cors',
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
