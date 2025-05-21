@@ -91,12 +91,10 @@ export default function Home() {
                     const response1 = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
                       mode: "cors",
                       // method: "POST",
-                      // method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ workbookData: base64Data }),
-                    });                    if (!response1.ok) {
+                    });                    
+                    if (!response1.ok) {
                       throw new Error(`Failed to fetch file: ${response1.statusText}`);
-                    }
+                    } 
                     const arrayBuffer = await response1.arrayBuffer();
                     workbook.xlsx
                     .load(arrayBuffer)
