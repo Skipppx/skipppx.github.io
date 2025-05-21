@@ -66,10 +66,12 @@ export default function Home() {
 
   const loadFileFromPath = async () => {
     try {
-      const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx");
+      const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
+        mode: "cors", // Ensure CORS mode is enabled
+      });
       if (!response.ok) {
-        throw new Error(`Failed to fetch file: ${response.statusText}`);
-      }
+      throw new Error(`Failed to fetch file: ${response.statusText}`);
+    }
       const arrayBuffer = await response.arrayBuffer();
       readDataFromFile(arrayBuffer);
     } catch (error) {
@@ -100,7 +102,8 @@ export default function Home() {
       Swal.fire({
       title: "Who's Playing?",
       html:
-        '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
+      'Please remove darts before playing! <br>' + 
+      '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
         '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
       focusConfirm: false,
       preConfirm: () => {

@@ -1,8 +1,12 @@
-
+@font-face {
+  font-family: Champion;
+  src: url('../public/data/Champion-HTF-Featherweight.otf');
+  font-size: 1em;
+}
 * {
-  /* font-family: 'Sofia Pro', sans-serif; */
-  font-family: monospace;
-  font-size: 1.05em;
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;  /* font-family: monospace; */
+  /* font-size: 1.05em; */
 }
 ::placeholder {
   color: #ebac1a;

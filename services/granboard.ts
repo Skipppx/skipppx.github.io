@@ -296,7 +296,8 @@ export class Granboard {
               Swal.fire({
                     title: "Who's Playing?",
                     html:
-                      '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
+                    'Please remove darts before playing! <br>' + 
+                    '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
                       '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
                     focusConfirm: false,
                     preConfirm: () => {
@@ -404,6 +405,7 @@ export class Granboard {
       Swal.fire({
         title: "Who's Playing?",
         html:
+        'Please remove darts before playing! <br>' + 
           '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
           '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
         focusConfirm: false,

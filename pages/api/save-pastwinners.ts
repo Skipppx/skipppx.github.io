@@ -9,7 +9,7 @@ const storage = new Storage({
   credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS || "{}"),
 });
 
-const bucketName = process.env.GOOGLE_CLOUD_STORAGE_BUCKET || "";
+const bucketName = process.env.GOOGLE_CLOUD_STORAGE_BUCKET || "kid-a";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {

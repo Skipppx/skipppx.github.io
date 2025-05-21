@@ -14,22 +14,20 @@ export default function Home() {
   const workbook = new Excel.Workbook();
   const workbook2 = new Excel.Workbook();
 
-  console.log("Google Cloud Project:", process.env.GOOGLE_CLOUD_PROJECT);
-console.log("Google Cloud Storage Bucket:", process.env.GOOGLE_CLOUD_STORAGE_BUCKET);
-
-
   const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
     try {
       const buffer = await workbook.xlsx.writeBuffer();
       const base64Data = Buffer.from(buffer).toString("base64");
   
       const response = await fetch("/api/save-leaderboard", {
+        mode: "cors",
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
       });
   
       if (!response.ok) {
+        console.log('here')
         throw new Error(`Failed to save file: ${response.statusText}`);
       }
   
@@ -45,6 +43,7 @@ console.log("Google Cloud Storage Bucket:", process.env.GOOGLE_CLOUD_STORAGE_BUC
       console.log('saving winner sheet');
 
       const response = await fetch('/api/save-pastwinners', {
+        mode: 'cors',
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
