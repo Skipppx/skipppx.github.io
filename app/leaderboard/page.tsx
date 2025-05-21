@@ -20,10 +20,9 @@ export default function Home() {
       const buffer = await workbook.xlsx.writeBuffer();
       const base64Data = Buffer.from(buffer).toString("base64");
   
-      const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
-        mode: "cors",
-        // method: "POST",
-        // method: "POST",
+      const response = await fetch('/api/save-leaderboard', {
+        mode: 'cors',
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
       });
@@ -46,7 +45,7 @@ export default function Home() {
 
       const response = await fetch('/api/save-pastwinners', {
         mode: 'cors',
-        // method: "POST",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
       });
@@ -89,9 +88,11 @@ export default function Home() {
                     const base64Data = Buffer.from(buffer2).toString("base64");
                     // console.log('It has been 7 days or more - resetting');
                     const response1 = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
-                      mode: "cors",
-                      // method: "POST",
-                    });                    
+                        mode: 'cors',
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ workbookData: base64Data }),
+                      });                    
                     if (!response1.ok) {
                       throw new Error(`Failed to fetch file: ${response1.statusText}`);
                     }
@@ -282,18 +283,18 @@ export default function Home() {
 
   const loadWinnersFileFromPath = async () => {
     try {
-      console.log('loading winner sheet from cloud');
+      console.log('loading winner sheet from Google Cloud Storage');
       const response = await fetch("https://storage.googleapis.com/kid-a/pastwinners2.xlsx", {
         mode: "cors", // Ensure CORS mode is enabled
         // method: "POST",
-      });      
+      });
       if (!response.ok) {
         throw new Error(`Failed to fetch file: ${response.statusText}`);
       }
       const arrayBuffer = await response.arrayBuffer();
       readWinnersDataFromFile(arrayBuffer);
     } catch (error) {
-      console.error("Error loading file:", error);
+      console.error("Error loading file from Google Cloud Storage:", error);
     }
   };
   useEffect(() => {
