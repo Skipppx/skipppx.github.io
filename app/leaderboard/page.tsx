@@ -28,7 +28,6 @@ export default function Home() {
       });
   
       if (!response.ok) {
-        console.log('here')
         throw new Error(`Failed to save file: ${response.statusText}`);
       }
   
