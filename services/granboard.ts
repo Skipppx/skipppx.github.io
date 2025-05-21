@@ -198,6 +198,7 @@ export class Granboard {
     const nameInputElement = document.querySelector('#nameInput') as HTMLInputElement | null;
     if (!nameInputElement || !nameInputElement.placeholder) {
       Swal.fire({
+        allowOutsideClick: false,
         title: "Who's Playing?",
         html:
         '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
@@ -284,6 +285,7 @@ export class Granboard {
 
           if (hitsTaken > 6) {
             Swal.fire ({
+              allowOutsideClick: false,
               title: 'Out of Darts, ' + name + '!',
               text: 'Your score was: ' + totalScore +  '. \n\nThis has been added to the leaderboard. Want to play again?',
               icon: 'warning',
@@ -336,6 +338,7 @@ export class Granboard {
                 //   });
               } else {
                 Swal.fire({
+                      allowOutsideClick: false,
                       title: "Who's Playing?",
                       html:
                       '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
@@ -445,6 +448,7 @@ export class Granboard {
       hitsTaken = 1;
       totalScore = 0;
       Swal.fire({
+        allowOutsideClick: false,
         title: "Who's Playing?",
         html:
         '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
