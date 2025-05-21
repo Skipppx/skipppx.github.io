@@ -6,9 +6,6 @@ import * as Excel from "exceljs";
 import path from "path";
 import fs from "fs";
 
-console.log("Google Cloud Project:", process.env.GOOGLE_CLOUD_PROJECT);
-console.log("Google Cloud Storage Bucket:", process.env.GOOGLE_CLOUD_STORAGE_BUCKET);
-
 const storage = new Storage({
   projectId: process.env.GOOGLE_CLOUD_PROJECT,
   credentials: JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS || "{}"),
@@ -28,6 +25,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const { workbookData } = req.body;
+    if (!workbookData) {
+      console.error("Missing workbookData in request body");
+      return res.status(400).json({ error: "Missing workbookData" });
+    } 
 
     // Recreate the workbook from the sent data
     const workbook = new Excel.Workbook();
