@@ -88,11 +88,9 @@ export default function Home() {
                     const base64Data = Buffer.from(buffer2).toString("base64");
                     // console.log('It has been 7 days or more - resetting');
                     const response1 = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
-                        mode: 'cors',
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ workbookData: base64Data }),
-                      });                    
+                      mode: "cors",
+                      // method: "POST",
+                    });               
                     if (!response1.ok) {
                       throw new Error(`Failed to fetch file: ${response1.statusText}`);
                     }
