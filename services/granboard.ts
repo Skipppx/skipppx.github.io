@@ -107,7 +107,7 @@ const saveWorkbookToServer = async (workbook: Excel.Workbook) => {
         mode: 'cors',
         // method: "POST",
         // headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ workbookData: base64Data }),
+        // body: JSON.stringify({ workbookData: base64Data }),
       });
 
       if (!response.ok) {
@@ -207,8 +207,9 @@ export class Granboard {
         html:
         '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
         '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-          '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
-        focusConfirm: false,
+        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
+        '<br><span class="swal-red">Email is only necessary to enter the weekly leaderboard, so that we can contact you if you win.</span>',
+      focusConfirm: false,
         preConfirm: () => {
           return [
             (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
@@ -347,7 +348,8 @@ export class Granboard {
                       html:
                       '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
                       '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-                        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
+                      '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
+                        '<br><span class="swal-red">Email is only necessary to enter the weekly leaderboard, so that we can contact you if you win.</span>',
                       focusConfirm: false,
                       preConfirm: () => {
                         return [
@@ -460,8 +462,9 @@ export class Granboard {
         html:
         '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
         '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-          '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">',
-        focusConfirm: false,
+        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
+        '<br><span class="swal-red">Email is only necessary to enter the weekly leaderboard, so that we can contact you if you win.</span>',
+      focusConfirm: false,
         preConfirm: () => {
           return [
             (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
