@@ -22,7 +22,7 @@ export default function Home() {
   
       const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
         mode: "cors",
-        method: "POST",
+        // method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workbookData: base64Data }),
       });
