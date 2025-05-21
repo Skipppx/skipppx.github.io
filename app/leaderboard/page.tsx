@@ -20,11 +20,11 @@ export default function Home() {
       const buffer = await workbook.xlsx.writeBuffer();
       const base64Data = Buffer.from(buffer).toString("base64");
   
-      const response = await fetch("https://storage.googleapis.com/kid-a/leaderboard.xlsx", {
+      const response = await fetch("/api/save-leaderboard", {
         mode: "cors",
         // method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ workbookData: base64Data }),
+        // headers: { "Content-Type": "application/json" },
+        // body: JSON.stringify({ workbookData: base64Data }),
       });
   
       if (!response.ok) {
