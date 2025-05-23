@@ -231,6 +231,9 @@ tbody th {
   margin-top: -.2em;
   margin-left: .2em;
 }
+#blackBoxes {
+  left: -1em;
+}
 
 #blackboxHit1, #blackboxHit2, #blackboxHit3, #blackboxHit4, #blackboxHit5, #blackboxHit6 {
   background-color: black;
@@ -239,7 +242,7 @@ tbody th {
   position: absolute;
   z-index: 1;
   margin-top: 7em;
-  margin-left: 2em;
+  margin-left: 3em;
   transform: rotate(-0deg);
   /* border: px solid orange; */
 }
@@ -257,7 +260,7 @@ tbody th {
 .spanHit {
   position: absolute;
   top: .7em;
-  left: .2em;
+  left: .5em;
   z-index: 999999;
   color: white;
 }
@@ -301,7 +304,7 @@ tbody th {
   #totalBox {
     position: fixed;
     top: 2em;
-    right: 2em;
+    right: 3em;
   }
 
   .swal2-input {
@@ -313,7 +316,7 @@ tbody th {
     border-radius: 100%;
     width: 6.5em;
     height: 6.5em;
-    left: 3em;
+    right: 3em;
     bottom: 2.4em;
   }
 
