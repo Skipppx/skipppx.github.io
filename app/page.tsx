@@ -108,6 +108,7 @@ export default function Home() {
   useEffect(() => {
       Swal.fire({
       allowOutsideClick: false,
+      confirmButtonText: "Ready to throw!",
       title: "Who's Playing?",
       html:
       '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span> <br>' + 

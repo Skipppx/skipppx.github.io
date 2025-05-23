@@ -211,6 +211,7 @@ export class Granboard {
           '<span class="swal-red">Email is only required if you want to enter the weekly leaderboard, just so we know who to contact!</span>',
         focusConfirm: false,
         allowEnterKey: true,
+        confirmButtonText: "Ready to throw!",
         preConfirm: () => {
           return [
             (document.getElementById('swal-input1') as HTMLInputElement)?.value || "",
@@ -345,6 +346,7 @@ export class Granboard {
               } else {
                 Swal.fire({
                       allowOutsideClick: false,
+                      confirmButtonText: "Ready to throw!",
                       title: "Who's Playing?",
                       html:
                       '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
@@ -461,6 +463,7 @@ export class Granboard {
       Swal.fire({
         allowOutsideClick: false,
         allowEnterKey: true,
+        confirmButtonText: "Ready to throw!",
         title: "Who's Playing?",
         html:
         '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span>' + 
