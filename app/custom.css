@@ -8,6 +8,12 @@
   font-optical-sizing: auto;  /* font-family: monospace; */
   /* font-size: 1.05em; */
 }
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 ::placeholder {
   color: #ebac1a;
 }
@@ -17,8 +23,6 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  width: 100vw;
-  height: 100vh;
 }
 
 button, [type='button'], [type='reset'], [type='submit'] {
