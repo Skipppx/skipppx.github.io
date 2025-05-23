@@ -231,9 +231,6 @@ tbody th {
   margin-top: -.2em;
   margin-left: .2em;
 }
-#blackBoxes {
-  left: -1em;
-}
 
 #blackboxHit1, #blackboxHit2, #blackboxHit3, #blackboxHit4, #blackboxHit5, #blackboxHit6 {
   background-color: black;
@@ -298,7 +295,8 @@ tbody th {
 
   #blackBoxes {
     position: absolute;
-    top: 8em;
+    top: 6em;
+    left: -1em;
   }
 
   #totalBox {
