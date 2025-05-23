@@ -313,10 +313,18 @@ export class Granboard {
                     timer: 10000,
                     timerProgressBar: true,
                   })
-                Toast.fire({
-                      icon: 'warning',
-                      title: 'Remove the previous darts now, and get ready to throw!',
-                    });
+                  Swal.fire ({
+                    allowOutsideClick: false,
+                    title: 'Get Ready!',
+                    confirmButtonText: "Ready to throw!",
+                    text: 'Please remove your darts and get ready to throw...',
+                    icon: 'warning',
+                    showConfirmButton: true,
+                    showCancelButton: false,
+                    cancelButtonText: 'No'
+                  }).then((result) => {
+
+                  });
                 // do nothing
                 // let timerInterval: string | number | NodeJS.Timeout | undefined;
                 //   Swal.fire({
