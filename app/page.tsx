@@ -111,10 +111,10 @@ export default function Home() {
       confirmButtonText: "Ready to throw!",
       title: "Who's Playing?",
       html:
-      '<span class="swal-red">Please get your darts ready, and remove any remaining on the board!</span> <br>' + 
+      '<span class="">Please get your darts ready, and remove any remaining on the board!</span> <br>' + 
       '<input id="swal-input1" class="swal2-input" placeholder="Name">' +
-        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)">' +
-        '<span class="swal-red">Email is only required if you want to enter the weekly leaderboard, just so we know who to contact!</span>',
+        '<input id="swal-input2" class="swal2-input" placeholder="Email (Optional)*">' +
+        '<span class="swal-red">*Email is only required if you want to enter the weekly leaderboard, just so we know who to contact!</span>',
       focusConfirm: false,
       allowEnterKey: true,
       preConfirm: () => {
