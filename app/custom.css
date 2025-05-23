@@ -208,7 +208,7 @@ tbody th {
   height: 5em;
   position: fixed;
   /* z-index: -10; */
-  right: 3.5em;
+  right: 4.5em;
   top: 1em;
   transform: rotate(10deg);
 }
@@ -314,8 +314,8 @@ tbody th {
     border-radius: 100%;
     width: 6.5em;
     height: 6.5em;
-    right: 3em;
-    bottom: 2.4em;
+    right: 4.5em;
+    bottom: 2.8em;
   }
 
   #tapSpan {
